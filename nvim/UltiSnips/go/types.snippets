@@ -1,0 +1,19 @@
+snippet type "type ..."
+type ${1:type-name} ${2:underlying-type}
+endsnippet
+
+snippet struct "struct"
+struct {
+	${0}
+}
+endsnippet
+
+snippet interface "interface"
+interface {
+	${0}
+}
+endsnippet
+
+snippet cast "(...)(...)"
+(${1:type})(${2:value})${0}
+endsnippet

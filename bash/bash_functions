@@ -1,0 +1,13 @@
+#!/bin/bash
+
+hgg() {
+    hg log --graph --template "{label('custom.rev',rev)}:{label('custom.node',node|short)}:{label('custom.branch',branch)}:{label('custom.author',author)}\n\'{label('custom.desc',desc)}\'\n"
+}
+
+fork() {
+    nohup $* &>/dev/null &
+}
+
+addPath() {
+    PATH="${PWD}:${PATH}"
+}
