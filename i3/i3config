@@ -6,6 +6,9 @@ set $mod Mod4
 ## background
 exec --no-startup-id "feh --bg-scale ~/Bilder/wallpapers/bigMouth.jpg"
 
+## compositor
+exec --no-startup-id "picom"
+
 ## autolock
 exec --no-startup-id "light-locker"
 
