@@ -1,178 +1,151 @@
-### MODKEY
-  set $mod Mod4
+# modkey
+set $mod Mod4
 
-### AUTORUN
-  ### KEYMAP
-#    exec --no-startup-id "setxkbmap de"
-  ### COMPOSITOR
-    #exec --no-startup-id "compton -b"
-  ### WALLPAPER
-    exec --no-startup-id "feh --bg-scale ~/Bilder/wallpapers/six.png"
-  ### POLKIT
-    exec --no-startup-id "/usr/lib/polkit-gnome-authentication-agent-1"
-    exec --no-startup-id "/usr/bin/lxpolkit"
-  ### PANEL
-    #exec --no-startup-id "tint2"
-    #exec --no-startup-id "xfce4-panel -d"
-    #exec --no-startup-id "xfce4-power-manager"
-  ### NOTIFICATION-DAEMON
- #   exec --no-startup-id "dunst"
-  ### MOUNT-HELPER
- #   exec --no-startup-id "udiskie"
-  ### OTHER
- #   exec --no-startup-id "pactl set-sink-volume 0 0%"
+# autorun
 
-### STYLE
-  ### GAPS
-    gaps inner 8
-    smart_gaps on
-  ### BORDER
-#   set $f_color #6EAFC8
-    set $f_color #e5e5e5
-    set $u_color #698F9D
-    set $t_color #e5e5e5
+## background
+exec --no-startup-id "feh --bg-scale ~/Bilder/wallpapers/bigMouth.jpg"
 
-    default_border pixel 2
-    #class          border   backgr   text     indicat  child_border
-    client.focused   $f_color $f_color $t_color $t_color $f_color
-    client.unfocused $u_color $u_color $t_color $t_color $u_color
-  ### FONT
-    font pango:Open Sans:style=Bold 14
+## autolock
+exec --no-startup-id "light-locker"
 
-### WORKSPACES
-  set $ws1 " 1 "
-  set $ws2 " 2 "
-  set $ws3 " 3 "
-  set $ws4 " 4 "
-  set $ws5 " 5 "
-  set $ws6 " 6 "
-  set $ws7 " 7 "
-  set $ws8 " 8 "
-  set $ws9 " 9 "
-  set $ws10 " 10 "
+## bar
+exec --no-startup-id "polybar mybar"
 
-### RESIZE
-  mode "resize" {
-          # These bindings trigger as soon as you enter the resize mode
-  
-          # Pressing left will shrink the window’s width.
-          # Pressing right will grow the window’s width.
-          # Pressing up will shrink the window’s height.
-          # Pressing down will grow the window’s height.
-          bindsym j resize shrink width 10 px or 10 ppt
-          bindsym k resize grow height 10 px or 10 ppt
-          bindsym l resize shrink height 10 px or 10 ppt
-          bindsym odiaeresis resize grow width 10 px or 10 ppt
-  
-          # same bindings, but for the arrow keys
-          bindsym Left resize shrink width 10 px or 10 ppt
-          bindsym Down resize grow height 10 px or 10 ppt
-          bindsym Up resize shrink height 10 px or 10 ppt
-          bindsym Right resize grow width 10 px or 10 ppt
-  
-          # back to normal: Enter or Escape or $mod+r
-          bindsym Return mode "default"
-          bindsym Escape mode "default"
-          bindsym $mod+r mode "default"
-  }
+# style
 
-### HOTKEYS
-  ### APPSTARTER
-    ### DESKTOP
-      #bindsym $mod+a exec --no-startup-id "xfce4-popup-whiskermenu"
-      #bindsym $mod+a exec --no-startup-id "xfce4-appfinder"
-      bindsym $mod+a exec --no-startup-id "rofi -show drun -theme sidebar"
-    ### DMENU LIKE
-      #bindsym $mod+d exec dmenu_run
-      #bindsym $mod+d exec "rofi -theme dmenu -show run"
-      bindsym $mod+d exec "dmenu_path | rofi -dmenu -theme dmenu $@ | sh"
-  ### TERMINAL
-    bindsym $mod+Return exec i3-sensible-terminal
-    #bindsym $mod+Return exec x-terminal-emulator
-    #bindsym $mod+Return exec xfce4-terminal
-  ### SCREENLOCK
-    bindsym XF86Sleep exec 'i3lock -n -c 57f9d6'
-  ### BACKLIGHT
-    #bindsym XF86MonBrightnessUp exec "lux -a 1%"
-    #bindsym XF86MonBrightnessDown exec "lux -s 1%"
-    bindsym XF86MonBrightnessUp   exec "xbacklight +1"
-    bindsym XF86MonBrightnessDown exec "xbacklight -1"
-  ### KILL FOCUSED WINDOW
-    bindsym $mod+Shift+q kill
-  ### CHANGE FOCUSE WINDOW
-    bindsym $mod+j focus left
-    bindsym $mod+k focus down
-    bindsym $mod+l focus up
-    bindsym $mod+odiaeresis focus right
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
-    bindsym $mod+space focus mode_toggle
-    # bindsym $mod+a focus parent
-    # bindsym $mod+d focus child
-  ### MOVE FOCUSED WINDOW
-    bindsym $mod+Shift+j move left
-    bindsym $mod+Shift+k move down
-    bindsym $mod+Shift+l move up
-    bindsym $mod+Shift+odiaeresis move right
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-    ### MOVE FOCUSED WINDOW TO WORKSPACE
-      bindsym $mod+Shift+1 move container to workspace $ws1
-      bindsym $mod+Shift+2 move container to workspace $ws2
-      bindsym $mod+Shift+3 move container to workspace $ws3
-      bindsym $mod+Shift+4 move container to workspace $ws4
-      bindsym $mod+Shift+5 move container to workspace $ws5
-      bindsym $mod+Shift+6 move container to workspace $ws6
-      bindsym $mod+Shift+7 move container to workspace $ws7
-      bindsym $mod+Shift+8 move container to workspace $ws8
-      bindsym $mod+Shift+9 move container to workspace $ws9
-      bindsym $mod+Shift+0 move container to workspace $ws10
-    #### MOVE FLOATING WINDOW
-      floating_modifier $mod
-  ### SPLIT ORIENTATION
-    bindsym $mod+h split h
-    bindsym $mod+v split v
-  ### LAYOUT
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
-    bindsym $mod+Shift+space floating toggle
-    bindsym $mod+f fullscreen toggle
-  ### SWITCH WORKSPACE
-    bindsym $mod+1 workspace $ws1
-    bindsym $mod+2 workspace $ws2
-    bindsym $mod+3 workspace $ws3
-    bindsym $mod+4 workspace $ws4
-    bindsym $mod+5 workspace $ws5
-    bindsym $mod+6 workspace $ws6
-    bindsym $mod+7 workspace $ws7
-    bindsym $mod+8 workspace $ws8
-    bindsym $mod+9 workspace $ws9
-    bindsym $mod+0 workspace $ws10
-  ### RELOAD CONFIGURATIONFILE
-    bindsym $mod+Shift+c reload
-  ### RESTART I3
-    bindsym $mod+Shift+r restart
-  ### POWERMENU
-    bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Power-Menu' -b 'Reboot' 'sudo reboot' -b 'Shutdown' 'sudo poweroff' -b 'Lock screen' 'i3lock -n -c 57f9d6' -b 'Exit i3' 'i3-msg exit' "
-  ### RESIZE MODE
-    bindsym $mod+r mode "resize"
+## gaps
+gaps inner 8
+smart_gaps on
 
-### I3BAR
-     bar {
-        font pango:Source Code Pro 20
-        status_command i3status
-     	colors {
-     		background #343434
-            #background #172220
-            #mode               border  bg      text
-     	    inactive_workspace  #3db39d #3db39d #ffffff
-            #inactive_workspace  #a0a0a0 #a0a0a0 #e5e5e5
-     	    focused_workspace   #f0c75e #f0c75e #ffffff
-            #focused_workspace   #e5e5e5 #e5e5e5 #172220
-     	}
-     }
+## border
+set $f_color #e5e5e5
+set $u_color #698F9D
+set $t_color #e5e5e5
+default_border pixel 2
+#class          border   backgr   text     indicat  child_border
+client.focused   $f_color $f_color $t_color $t_color $f_color
+client.unfocused $u_color $u_color $t_color $t_color $u_color
+
+## font
+font pango:Source Code Pro:style=Bold 14
+
+# workspaces
+set $ws1 " 1 "
+set $ws2 " 2 "
+set $ws3 " 3 "
+set $ws4 " 4 "
+set $ws5 " 5 "
+set $ws6 " 6 "
+set $ws7 " 7 "
+set $ws8 " 8 "
+set $ws9 " 9 "
+set $ws10 " 10 "
+
+# windows
+
+## resize
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+     
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym odiaeresis resize grow width 10 px or 10 ppt
+     
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+     
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+# keymappings
+
+## applauncher
+bindsym $mod+a exec --no-startup-id "rofi -show drun -theme sidebar"
+
+## terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+## backlight
+bindsym XF86MonBrightnessUp   exec "xbacklight +1"
+bindsym XF86MonBrightnessDown exec "xbacklight -1"
+
+## window managerment
+
+### close window
+bindsym $mod+Shift+q kill
+
+### switch window
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+odiaeresis focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+space focus mode_toggle
+
+### move window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+floating_modifier $mod
+
+### split orientation
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+### layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+f fullscreen toggle
+
+### switch workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+### restart i3
+bindsym $mod+Shift+r restart
+
+### powermenu
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Power-Menu' -b 'Reboot' 'sudo reboot' -b 'Shutdown' 'sudo poweroff' -b 'Lock screen' 'i3lock -n -c 57f9d6' -b 'Exit i3' 'i3-msg exit' "
+
+### resize window
+bindsym $mod+r mode "resize"

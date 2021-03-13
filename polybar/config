@@ -1,0 +1,276 @@
+[colors]
+black1  = #1e272e
+
+white1  = #ffffff
+
+grey1   = #d2dae2
+
+pink1   = #fd79a8
+pink2   = #e84393
+
+orange1 = #ffc048
+orange2 = #ffa801
+
+green1  = #55efc4
+green2  = #00b894
+
+blue1   = #74b9ff
+blue2   = #0984e3
+
+turq1   = #34e7e4
+
+purple1 = #a29bfe
+purple2 = #6c5ce7
+
+yellow1 = #ffeaa7
+yellow2 = #fdcb6e
+
+background = ${self.black1}
+background-alt = ${self.black1}
+foreground = ${self.white1}
+foreground-alt = ${self.white1}
+
+primary = ${self.yellow2}
+secondary = ${self.green1}
+alert = ${self.pink1}
+
+[symbols]
+bar = ─
+
+[bar/mybar]
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 5%
+radius = 0.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 5
+border-color = ${bar/mybar.background}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = DejaVu Sans:style=Bold:size=12
+font-1 = unifont:fontformat=truetype:size=10:antialias=false;0
+;font-2 = siji:pixelsize=12;1
+font-2 = DejaVu Sans:style=Bold:size=12
+
+modules-left = i3
+modules-center = 
+modules-right = pulseaudio wlan battery date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+format = <label-state>
+index-sort = true
+wrapping-scroll = false
+
+label-focused = %index%
+label-focused-background = ${colors.background}
+label-focused-padding = 2
+label-focused-foreground = ${colors.primary}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix =
+format-prefix-foreground = ${colors.foreground-alt}
+label = CPU: %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #4bffdc
+label = MEM: %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+
+format-connected = <label-connected>
+label-connected = %essid% %local_ip%
+label-connected-foreground = ${colors.purple1}
+
+format-disconnected = <label-disconnected>
+label-disconnected = diconnected
+label-disconnected-foreground = ${colors.purple2}
+
+[module/eth]
+type = internal/network
+interface = eth1
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%d.%m.%Y"
+time = %H:%M:%S
+
+label = %date% %time%
+label-foreground = ${colors.white1}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${colors.green1}
+
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.turq1}
+bar-volume-foreground-1 = ${colors.turq1}
+bar-volume-foreground-2 = ${colors.turq1}
+bar-volume-foreground-3 = ${colors.turq1}
+bar-volume-foreground-4 = ${colors.turq1}
+bar-volume-foreground-5 = ${colors.turq1}
+bar-volume-foreground-6 = ${colors.turq1}
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.grey1}
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <label-charging>
+label-charging = Charging %percentage% %time%
+label-charging-foreground = ${colors.blue1}
+
+format-discharging = <label-discharging>
+label-discharging = Discharging %percentage%%
+label-discharging-foreground = ${colors.blue1}
+
+format-full = <label-full>
+label-full = Full
+label-full-foreground = ${colors.blue1}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = POWER
+label-open-foreground = ${colors.primary}
+label-close = cancel
+label-close-foreground = ${colors.primary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = lock
+menu-0-0-exec = light-locker-command -l
+menu-0-1 = exit
+menu-0-1-exec = i3-msg exit
+menu-0-2 = reboot
+menu-0-2-exec = sudo reboot
+menu-0-3 = power off
+menu-0-3-exec = sudo poweroff
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
