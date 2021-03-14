@@ -1,3 +1,4 @@
+"general
 filetype plugin on
 set runtimepath^=~/.config/nvim
 let &packpath = &runtimepath
@@ -11,42 +12,54 @@ set shiftwidth=4
 set expandtab
 set showmatch
 set wildmenu
-let mapleader=","
-set t_Co=256  " make use of 256 terminal colors 
-
-" brackets, braces, parantheses, quotes
-imap ( ()<Left>
-imap [ []<Left>
-imap { {}<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
-inoremap < <><Left>
-nmap ll $a;<ESC>
+set updatetime=100
 
 " plug
 call plug#begin()
- ""   Plug 'Valloric/YouCompleteMe', { 'do': ':UpdateRemotePlugins' }
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'SirVer/ultisnips'
-    Plug 'https://github.com/leafgarland/typescript-vim.git'
-    Plug 'NLKNguyen/papercolor-theme'
-    Plug 'zah/nim.vim'
     Plug 'https://github.com/tpope/vim-fugitive'
-    Plug 'sebdah/vim-delve'
+    Plug 'https://github.com/lifepillar/vim-wwdc17-theme'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'https://github.com/itchyny/lightline.vim'
+    Plug 'dense-analysis/ale'
+    Plug 'https://github.com/airblade/vim-gitgutter/'
+    Plug 'https://github.com/sirver/UltiSnips'
 call plug#end()
 
-" ultisnips
-let g:UltiSnipsExpandTrigger="<c-space>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+"ale
+let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_cursor_detail = 1
+let g:ale_detail_to_floating_preview = 1
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_completion_autoimport = 1
+let g:ale_linters = {
+\ 'go': ['gopls'],
+\ }
 
-"ycm
-""let g:ycm_filepath_blacklist = {
-""      \ 'html': 1,
-""      \ 'jsx': 1,
-""      \ 'xml': 1,
-""      \}
+"gitgutter
+let g:gitgutter_grep=''
 
-" save
+"style
+set t_Co=256
+set termguicolors
+let g:wwdc17_frame_color = 10
+colorscheme wwdc17
+
+"lightline
+let g:lightline = {
+\ 'colorscheme':  'ayu_light',
+\ }
+
+"UltiSnips
+let g:UltiSnipsExpandTrigger = '<c-space>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+
+"keymappings
+
+"leader
+let mapleader=","
+
+"save
 nmap <C-s> :write <CR>
 imap <C-s> <Esc>:write<CR>a
 nmap qw :write<CR>:wincmd q<CR>
@@ -75,8 +88,12 @@ nnoremap <leader><space> :nohlsearch<CR>
 " terminal
 tnoremap <Esc><Esc> <C-\><C-n>
 
-" run
-command RunFile vsplit term://%
-
-set background=light
-colorscheme PaperColor
+"locale configuration
+let lrcFilter = '%:p:h'
+while expand(lrcFilter) != '/'
+    let lrcPath = join([expand(lrcFilter), '/.init.vim'], '')
+    if filereadable(lrcPath)
+        exec 'source ' . lrcPath
+    endif
+    let lrcFilter = join([lrcFilter, ':h'], '')
+endwhile

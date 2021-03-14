@@ -6,7 +6,6 @@ install: install-init.vim \
 		 install-UltiSnips \
 		 install-ftplugin \
 		 install-plug \
-		 install-summerfruit256
 
 install-init.vim:
 	mkdir -p $(CONFDIR)
@@ -23,7 +22,3 @@ install-ftplugin:
 install-plug:
 	mkdir -p $(CONFDIR)/autoload
 	./download.sh "$(PLUGURL)" $(CONFDIR)/autoload/plug.vim
-
-install-summerfruit256:
-	mkdir -p $(CONFDIR)/colors
-	./download.sh "$(SUMMERFRUITURL)" $(CONFDIR)/colors/summerfruit256.vim

@@ -141,7 +141,8 @@ label-connected-foreground = ${colors.purple1}
 
 format-disconnected = <label-disconnected>
 label-disconnected = diconnected
-label-diconnected-background = ${self.label-connected-foreground}
+label-disconnected-padding = 2
+label-disconnected-background = ${self.label-connected-foreground}
 label-disconnected-foreground = ${self.label-connected-background}
 
 [module/date]
