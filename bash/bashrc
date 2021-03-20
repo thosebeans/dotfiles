@@ -116,9 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval `ssh-agent -s` &>/dev/null
-ssh-add ~/.ssh/* &>/dev/null
-
 # added by Miniconda3 installer
 export PATH="/home/christian/PROGRAMME/miniconda3/bin:$PATH"
 
@@ -134,3 +131,8 @@ export XDG_CONFIG_HOME
 export EDITOR=$(which nvim)
 
 export GOPROXY=https://proxy.golang.org
+
+if which ssh-agent &>/dev/null; then
+    eval "$(ssh-agent)" &>/dev/null
+    ssh-add ~/.ssh/* &>/dev/null
+fi

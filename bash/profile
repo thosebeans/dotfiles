@@ -38,4 +38,7 @@ tmpDirPath="/tmp/tmp-$(whoami)-$(date +%Y%m%d%m%H%M%S)"
 mkdir -p "${tmpDirPath}"
 ln -sf "${tmpDirPath}" "${HOME}/tmp"
 
-eval "ssh-agent" &>/dev/null || true
+if which ssh-agent &>/dev/null; then
+    eval "$(ssh-agent)"
+    ssh-add ~/.ssh/* &>/dev/null
+fi

@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-cp "$1" "$2.bak.$(date +%Y%m%d%M%s)"
+cp "$1" "$1.bak.$(date +%Y%m%d%M%s)"

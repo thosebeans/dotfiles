@@ -3,19 +3,18 @@ set $mod Mod4
 
 # autorun
 
+exec --no-startup-id "light-locker"
+exec --no-startup-id "polybar mybar"
+exec --no-startup-id "lxpolkit"
+exec --no-startup-id "udiskie"
+
+# style
+
 ## background
 exec --no-startup-id "feh --bg-scale ~/Bilder/wallpapers/bigMouth.jpg"
 
 ## compositor
 exec --no-startup-id "picom"
-
-## autolock
-exec --no-startup-id "light-locker"
-
-## bar
-exec --no-startup-id "polybar mybar"
-
-# style
 
 ## gaps
 gaps inner 8
@@ -146,9 +145,6 @@ bindsym $mod+0 workspace $ws10
 
 ### restart i3
 bindsym $mod+Shift+r restart
-
-### powermenu
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Power-Menu' -b 'Reboot' 'sudo reboot' -b 'Shutdown' 'sudo poweroff' -b 'Lock screen' 'i3lock -n -c 57f9d6' -b 'Exit i3' 'i3-msg exit' "
 
 ### resize window
 bindsym $mod+r mode "resize"
