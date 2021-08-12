@@ -34,6 +34,7 @@ let g:ale_lint_on_text_changed = 'always'
 let g:ale_completion_autoimport = 1
 let g:ale_linters = {
 \ 'go': ['gopls'],
+\ 'javascript': ['tsserver'],
 \ }
 
 "gitgutter
@@ -65,10 +66,10 @@ imap <C-s> <Esc>:write<CR>a
 nmap qw :write<CR>:wincmd q<CR>
 
 " windows
-nmap <C-Up>    :wincmd k <CR>
-nmap <C-Down>  :wincmd j <CR>
-nmap <C-Left>  :wincmd h <CR>
-nmap <C-Right> :wincmd l <CR>
+nmap <C-Up>    :wincmd k<CR>
+nmap <C-Down>  :wincmd j<CR>
+nmap <C-Left>  :wincmd h<CR>
+nmap <C-Right> :wincmd l<CR>
 nmap qq :wincmd q<CR>
 nmap qi :q!<CR>
 nmap +     :wincmd +<CR>
@@ -76,24 +77,31 @@ nmap -     :wincmd -<CR>
 nmap <     :wincmd <<CR>
 nmap >     :wincmd ><CR>
 
+"semicolon
+nmap ll $a;<Esc>
+
 " tabs
-nmap t<Up>    :tabnew<CR>
-nmap t<Down>  :tabclose<CR>
-nmap t<Left>  :tabprevious<CR>
-nmap t<Right> :tabnext<CR>
+nmap t<Up>          :tabnew<CR>
+nmap t<Down>        :tabclose<CR>
+nmap t<Left>        :tabprevious<CR>
+nmap t<Right>       :tabnext<CR>
+nmap <S-t><Left>    :tabmove -1<CR>
+nmap <S-t><Right>   :tabmove +1<CR>
+nmap <C-t><Up>      :tabnew<CR>
+nmap <C-t><Down>    :tabclose<CR>
+nmap <C-t><Left>    :tabprevious<CR>
+nmap <C-t><Right>   :tabnext<C-t><CR>
+nmap <C-S-t><Left>  :tabmove -1<CR>
+nmap <C-S-t><Right> :tabmove +1<CR>
+imap <C-t><Up>      <Esc>:tabnew<CR>
+imap <C-t><Down>    <Esc>:tabclose<CR>
+imap <C-t><Left>    <Esc>:tabprevious<CR>
+imap <C-t><Right>   <Esc>:tabnext<C-t><CR>
+imap <C-S-t><Left>  <Esc>:tabmove -1<CR>
+imap <C-S-t><Right> <Esc>:tabmove +1<CR>
 
 " search
 nnoremap <leader><space> :nohlsearch<CR>
 
 " terminal
 tnoremap <Esc><Esc> <C-\><C-n>
-
-"locale configuration
-let lrcFilter = '%:p:h'
-while expand(lrcFilter) != '/'
-    let lrcPath = join([expand(lrcFilter), '/.init.vim'], '')
-    if filereadable(lrcPath)
-        exec 'source ' . lrcPath
-    endif
-    let lrcFilter = join([lrcFilter, ':h'], '')
-endwhile
