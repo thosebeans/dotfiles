@@ -33,8 +33,8 @@ for i in $additionalPaths; do
     fi
 done
 
-rm -rf "${HOME}/tmp" || true
-tmpDirPath="/tmp/tmp-$(whoami)-$(date +%Y%m%d%m%H%M%S)"
+rm -rf "${HOME}/tmp"
+tmpDirPath="/tmp/tmp-$(whoami)-$(date +%Y%m%d)"
 mkdir -p "${tmpDirPath}"
 ln -sf "${tmpDirPath}" "${HOME}/tmp"
 

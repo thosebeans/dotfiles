@@ -35,6 +35,7 @@ let g:ale_completion_autoimport = 1
 let g:ale_linters = {
 \ 'go': ['gopls'],
 \ 'javascript': ['tsserver'],
+\ 'powershell': ['psscriptanalyzer'],
 \ }
 
 "gitgutter
