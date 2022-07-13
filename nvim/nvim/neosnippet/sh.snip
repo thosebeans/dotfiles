@@ -1,0 +1,14 @@
+snippet if
+    if ${1:#:CONDITION}; then
+        ${0}
+    fi
+
+snippet for
+    for ${1:#:VAR} in ${2:#:COLLECTION}; do
+        ${0}
+    done
+
+snippet while
+    while ${1:#:CONDITION}; do
+        ${0}
+    done

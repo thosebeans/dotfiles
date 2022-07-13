@@ -1,0 +1,61 @@
+snippet import
+abbr import ( ... )
+    import (
+        ${0}
+    )
+
+snippet const
+abbr const ( ... )
+options head
+    const (
+        ${0}
+    )
+
+snippet if
+abbr if CONDITION { ... }
+    if ${1:CONDITION} {
+        ${0}
+    }
+
+snippet else
+abbr else { ... }
+    else {
+        ${0}
+    }
+
+snippet meth
+abbr func (S T) NAME(...) (...) { ... }
+options head
+    func (${1:RECEIVER} ${2:RECEIVER_TYPE}) ${3:NAME}(${4:ARGS}) ${5:RETURN} {
+        ${0}
+    }
+
+snippet for
+abbr for CONDITION { ... }
+    for ${1:CONDITION} {
+        ${0}
+    }
+
+snippet fori
+abbr for INIT; CONDITON; STEP { ... }
+    for ${1:INIT}; ${2:CONDITION}; ${3:STEP} {
+        ${0}
+    }
+
+snippet forr
+abbr for K,V := range COLLECTION { ... }
+    for ${1:KEY},${2:VALUE} := range ${3:COLLECTION} {
+        ${0}
+    }
+
+snippet type
+abbr type ... ...
+options head
+    type ${1:NAME} ${0}
+
+snippet func
+options head
+abbr func NAME(...) (...) { ... }
+    func ${1:NAME}(${2:ARGS}) ${3:RETURN} {
+        ${0}
+    }
