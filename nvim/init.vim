@@ -22,8 +22,19 @@ call plug#begin()
     Plug 'https://github.com/itchyny/lightline.vim'
     Plug 'dense-analysis/ale'
     Plug 'https://github.com/airblade/vim-gitgutter/'
-    Plug 'https://github.com/sirver/UltiSnips'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'https://github.com/Shougo/neosnippet.vim'
 call plug#end()
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
+" neosnippet
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}
+let g:neosnippet#snippets_directory = '~/.config/nvim/neosnippet'
+imap <C-Space> <Plug>(neosnippet_expand_or_jump)
+imap <expr><TAB> neosnippet#jumpable() ? '<Plug>(neosnippet_jump)' : '<Tab>'
+smap <expr><TAB> neosnippet#jumpable() ? '<Plug>(neosnippet_jump)' : '<Tab>'
 
 "ale
 let g:ale_completion_enabled = 1
@@ -51,10 +62,6 @@ colorscheme wwdc17
 let g:lightline = {
 \ 'colorscheme':  'ayu_light',
 \ }
-
-"UltiSnips
-let g:UltiSnipsExpandTrigger = '<c-space>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
 
 "keymappings
 
