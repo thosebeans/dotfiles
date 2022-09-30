@@ -12,3 +12,15 @@ snippet while
     while ${1:#:CONDITION}; do
         ${0}
     done
+
+snippet func
+abbr FUNCNAME() { ... }
+    ${1:NAME}() {
+    ${2:    }${0}
+    }
+
+snippet funcsub
+abbr FUNCNAME() ( ... )
+    ${1:NAME}() (
+    ${2:    }${0}
+    )

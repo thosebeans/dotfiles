@@ -53,7 +53,7 @@ if ! shopt -oq posix; then
 fi
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
+        . /etc/profile.d/vte.sh
 fi
 
 ##########

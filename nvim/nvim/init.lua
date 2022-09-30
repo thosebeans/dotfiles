@@ -35,10 +35,10 @@ keymaps = {
     -- neosnippet
     { 'i', '<C-Space>', '<Plug>(neosnippet_expand_or_jump)' },
     { 'i', '<Tab>', function()
-        return vim.call('neosnippet#jumpable') and '<Plug>(neosnippet_jump)' or '<Tab>'
+        return vim.call('neosnippet#jumpable') == 1 and '<Plug>(neosnippet_jump)' or '<Tab>'
     end, { expr = true } },
     { 's', '<Tab>', function()
-        return vim.call('neosnippet#jumpable') and '<Plug>(neosnippet_jump)' or '<Tab>'
+        return vim.call('neosnippet#jumpable') == 1 and '<Plug>(neosnippet_jump)' or '<Tab>'
     end, { expr = true } },
 }
 
@@ -111,3 +111,6 @@ for k,v in pairs(variables) do
 end
 
 vim.cmd('colorscheme ' .. colorscheme)
+
+vim.cmd("amenu Test.A.B\t:echo BBB")
+vim.cmd("amenu Test.A.C\t:echo CCC")
