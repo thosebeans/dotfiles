@@ -26,7 +26,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-additionalPaths="$HOME/bin $HOME/.cargo/bin"
+additionalPaths="$HOME/bin $HOME/.cargo/bin $HOME/.local/bin"
 for i in $additionalPaths; do
     if [ "${PATH}" != *$i* ]; then
         PATH="$i:$PATH"

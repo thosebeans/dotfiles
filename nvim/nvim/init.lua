@@ -51,6 +51,7 @@ dense-analysis/ale
 https://github.com/airblade/vim-gitgutter/
 Shougo/deoplete.nvim
 https://github.com/Shougo/neosnippet.vim
+https://github.com/hashivim/vim-terraform
 ]]
 
 variables = {
